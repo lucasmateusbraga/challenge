@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Foundey · Senior PD Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f5; --ink:#1F1F1F; --ink-soft:#231F20;
+    --muted:#5E5E5E; --muted2:#9E9E9E; --line:#E0E0E0;
+    --blue:#465EFF; --red:#FF486C; --green:#008000; --yellow:#FFE14D;
+    --card:#FFFFFF;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Plus Jakarta Sans', system-ui, sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.label{font-family:'Sora', system-ui, sans-serif;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 28px;}
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  /* HERO */
+  .hero{padding:88px 0 64px; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; margin-bottom:18px;
+  }
+  h1{font-size:38px; line-height:1.18; font-weight:600; margin:0 0 20px; max-width:720px;}
+  .lede{font-size:17px; color:var(--muted); max-width:620px; margin:0 0 32px;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .meta-chip{
+    font-size:12.5px; color:var(--ink-soft); background:var(--card);
+    border:1px solid var(--line); border-radius:6px; padding:7px 12px;
+  }
+
+  /* SECTION LABEL */
+  .label{
+    font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:14px;
+  }
+  h2{font-size:26px; font-weight:600; line-height:1.28; margin:0 0 20px; max-width:640px;}
+  p.body{font-size:15.5px; color:var(--ink-soft); max-width:640px; margin:0 0 14px;}
+  p.body:last-child{margin-bottom:0;}
+
+  .quote{
+    font-style:italic; font-size:17px; color:var(--ink); background:var(--card);
+    border-left:3px solid var(--red); padding:16px 20px; margin:22px 0; max-width:600px;
+    border-radius:0 6px 6px 0;
+  }
+  .quote span{display:block; font-style:normal; font-size:12.5px; color:var(--muted2); margin-top:8px;}
+
+  .principle-box{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:28px 30px; margin-top:8px;
+  }
+  .principle-box .big{font-size:20px; font-weight:600; margin-bottom:10px;}
+  .three-col{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px;}
+  .three-col .item h3{font-size:14px; margin:0 0 6px; color:var(--ink);}
+  .three-col .item p{font-size:13.5px; color:var(--muted); margin:0;}
+
+  /* DECISIONS */
+  .decision{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:30px 32px; margin-bottom:22px;
+  }
+  .decision:last-child{margin-bottom:0;}
+  .decision .dnum{font-size:12px; color:var(--muted2); font-weight:600; letter-spacing:.04em; text-transform:uppercase;}
+  .decision h3{font-size:19px; font-weight:600; margin:8px 0 14px;}
+  .tension{font-size:14px; color:var(--muted); margin-bottom:20px;}
+  .options{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;}
+  .opt{border-radius:8px; padding:16px 18px; border:1px solid var(--line);}
+  .opt.rejected{opacity:.6;}
+  .opt.chosen{border-color:var(--blue); background:#F4F6FF;}
+  .opt-tag{font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-bottom:8px;}
+  .opt.rejected .opt-tag{color:var(--muted2);}
+  .opt.chosen .opt-tag{color:var(--blue);}
+  .opt p{font-size:13.5px; margin:0; color:var(--ink-soft);}
+  .why{font-size:14px; color:var(--ink-soft); margin-bottom:10px;}
+  .why b{font-weight:600;}
+  .tradeoff-line{font-size:13px; color:var(--muted); border-top:1px dashed var(--line); padding-top:12px; margin-top:14px;}
+
+  /* WIREFRAME */
+  .wf-shell{
+    background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    display:flex; margin-top:8px;
+  }
+  .wf-side{width:150px; background:#F1F0EB; border-right:1px solid var(--line); padding:16px 0; flex-shrink:0;}
+  .wf-side .wf-brand{font-size:12px; font-weight:700; padding:0 16px 14px; color:var(--muted2);}
+  .wf-side .wf-item{font-size:12.5px; padding:9px 16px; color:var(--muted);}
+  .wf-side .wf-item.active{color:var(--ink); font-weight:600; background:#E4E2DA; border-radius:0 6px 6px 0;}
+  .wf-main{flex:1; padding:20px 22px; min-width:0;}
+  .wf-toprow{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;}
+  .wf-title{font-size:15px; font-weight:600;}
+  .wf-sub{font-size:11.5px; color:var(--muted2);}
+  .wf-toggle{display:flex; gap:6px; font-size:11px;}
+  .wf-toggle span{border:1px solid var(--line); border-radius:5px; padding:4px 9px; color:var(--muted);}
+  .wf-toggle span.on{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  .wf-panel{border:1px solid var(--line); border-radius:8px; margin-bottom:14px;}
+  .wf-panel-head{
+    display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--line);
+    font-size:12.5px; font-weight:600;
+  }
+  .wf-dot{width:8px; height:8px; border-radius:50%; background:var(--red);}
+  .wf-count{background:var(--red); color:#fff; font-size:10.5px; border-radius:10px; padding:1px 7px; font-weight:700;}
+  .wf-rank-label{margin-left:auto; font-size:10.5px; color:var(--muted2); font-weight:400; text-transform:none;}
+
+  .wf-row{display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:1px solid #F0EFEA; font-size:12px;}
+  .wf-row:last-child{border-bottom:none;}
+  .wf-tag{font-size:9.5px; font-weight:700; letter-spacing:.03em; padding:2px 6px; border-radius:4px; color:#fff; flex-shrink:0;}
+  .wf-tag.order{background:var(--red);}
+  .wf-tag.notif{background:#C77800;}
+  .wf-tag.comms{background:var(--blue);}
+  .wf-row .rtext{color:var(--ink-soft); flex:1;}
+  .wf-row .rtext b{color:var(--ink); font-weight:600;}
+  .wf-row .rdue{color:var(--muted2); font-size:10.5px; flex-shrink:0;}
+  .wf-btn{font-size:10.5px; border:1px solid var(--line); border-radius:5px; padding:4px 10px; flex-shrink:0; color:var(--ink-soft);}
+
+  .wf-ref-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .wf-ref-card{border:1px solid var(--line); border-radius:7px; padding:10px 12px;}
+  .wf-ref-card .rt{font-size:10.5px; font-weight:600; color:var(--muted); margin-bottom:8px;}
+  .wf-bar{height:6px; background:#EDEBE4; border-radius:3px; margin-bottom:5px;}
+  .wf-bar.short{width:60%;}
+
+  .wf-caption{font-size:12.5px; color:var(--muted2); margin-top:12px; font-style:italic;}
+
+  /* TRADEOFFS */
+  .out-list{list-style:none; padding:0; margin:0;}
+  .out-list li{
+    font-size:14.5px; color:var(--ink-soft); padding:12px 0; border-bottom:1px solid var(--line);
+    display:flex; gap:12px;
+  }
+  .out-list li:last-child{border-bottom:none;}
+  .out-list li .x{color:var(--muted2); flex-shrink:0;}
+
+  footer{padding:48px 0 80px; text-align:center; color:var(--muted2); font-size:13px;}
+
+  @media(prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#161513; --ink:#F2F1EC; --ink-soft:#D8D6CE; --muted:#9A988F; --muted2:#726F65;
+      --line:#302E29; --card:#1D1C19;
+    }
+    :root:not([data-theme="light"]) .opt.chosen{background:#1A2038;}
+    :root:not([data-theme="light"]) .wf-side{background:#201F1B;}
+    :root:not([data-theme="light"]) .wf-side .wf-item.active{background:#2B2A25;}
+    :root:not([data-theme="light"]) .wf-row{border-color:#26251F;}
+    :root:not([data-theme="light"]) .wf-bar{background:#2A2823;}
+  }
+  :root[data-theme="dark"]{
+    --bg:#161513; --ink:#F2F1EC; --ink-soft:#D8D6CE; --muted:#9A988F; --muted2:#726F65;
+    --line:#302E29; --card:#1D1C19;
+  }
+
+  /* HI-FI MOCKUP */
+  /* HI-FI MOCKUP - responsive presentation inside the case */
+  .hf-scroll{
+    width:100%;
+    max-width:none;
+    margin:8px auto 0;
+    padding:0 28px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scrollbar-gutter:stable;
+  }
+  .hf-outer{
+    width:100%;
+    max-width:1180px;
+    min-width:0;
+    margin:0 auto;
+    background:#F1EFE9;
+    border-radius:20px;
+    padding:14px;
+    overflow:hidden;
+  }
+  .hf-shell{
+    display:grid;
+    grid-template-columns:170px minmax(0,1fr);
+    width:100%;
+    min-width:0;
+    background:#FFFEFC;
+    border:1px solid #ECE9E2;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 20px 44px -26px rgba(40,30,15,.28);
+  }
+  .hf-side{width:auto; min-width:0; background:#FBFAF7; border-right:1px solid #EFECE4; padding:18px 0;}
+  .hf-brand{display:flex; align-items:center; gap:8px; padding:0 14px 22px; font-family:'Sora'; font-weight:700; font-size:12px; color:#211D16;}
+  .hf-brand .sq{width:16px; height:16px; border-radius:5px; background:#FF486C; flex-shrink:0;}
+  .hf-nav{padding:0 8px;}
+  .hf-nitem{display:flex; align-items:center; gap:7px; padding:7px 9px; border-radius:8px; font-size:11px; color:#928D80; margin-bottom:2px; font-weight:500;}
+  .hf-nitem .ic{width:12px; height:12px; border-radius:3px; border:1.4px solid #D8D3C6; flex-shrink:0;}
+  .hf-nitem.active{background:#FFEEF0; color:#D82C3B; font-weight:700;}
+  .hf-nitem.active .ic{border-color:#FF486C; background:#FF486C;}
+  .hf-nitem .badge{margin-left:auto; background:#FF486C; color:#fff; font-size:9px; font-weight:700; border-radius:8px; padding:1px 5px;}
+
+  .hf-main{min-width:0; padding:22px 24px;}
+  .hf-topbar{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px;}
+  .hf-topbar h4{font-family:'Sora'; font-size:15px; font-weight:700; margin:0; color:#211D16;}
+  .hf-tabs{display:flex; gap:2px; background:#F1EFE9; border-radius:8px; padding:3px;}
+  .hf-tab{font-size:10px; font-weight:600; color:#928D80; padding:5px 10px; border-radius:6px;}
+  .hf-tab.on{background:#fff; color:#211D16; box-shadow:0 2px 6px rgba(40,30,15,.10);}
+
+  .hf-filters{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:16px;}
+  .hf-fcard{min-width:0; background:#fff; border:1px solid #EFECE4; border-radius:11px; padding:10px 11px; box-shadow:0 6px 16px -12px rgba(40,30,15,.16);}
+  .hf-fcard .fdot{width:6px; height:6px; border-radius:50%; display:inline-block; margin-right:5px;}
+  .hf-fcard .fn{font-family:'Sora'; font-size:17px; font-weight:700; color:#211D16; line-height:1.1; margin-bottom:4px;}
+  .hf-fcard .fl{font-size:9.5px; color:#948F82; font-weight:600; white-space:nowrap;}
+  .hf-fcard.on{border-color:#FBCBD2; background:#FFF6F7;}
+  .hf-fcard.on .fn{color:#D82C3B;}
+
+  .hf-panel-title{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+  .hf-panel-title .htitle{font-family:'Sora'; font-weight:700; font-size:12px; color:#211D16;}
+  .hf-panel-title .hcount{color:#B4AFA0; font-size:11px; font-weight:600;}
+  .hf-panel-title .minitag{margin-left:auto; font-size:9px; font-weight:700; color:#948F82; background:#F1EFE9; border-radius:6px; padding:3px 7px;}
+
+  .hf-card-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-bottom:8px;}
+  .hf-card{min-width:0; background:#fff; border:1px solid #EFECE4; border-radius:11px; padding:12px 13px; box-shadow:0 8px 20px -14px rgba(40,30,15,.18);}
+  .hf-card-top{display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:9px;}
+  .hf-due-pill{font-size:9px; font-weight:700; padding:3px 7px; border-radius:20px; white-space:nowrap;}
+  .hf-due-pill.pink{background:#FCE1E5; color:#D82C3B;}
+  .hf-due-pill.peach{background:#FDEEDC; color:#C1670B;}
+  .hf-due-pill.mint{background:#E1F3EA; color:#1F9463;}
+  .hf-tagpill{font-size:8px; font-weight:700; border-radius:6px; padding:3px 6px; flex-shrink:0; letter-spacing:.01em;}
+  .hf-tagpill.order{background:#FDEBEC; color:#D82C3B;}
+  .hf-tagpill.notif{background:#FDF1E1; color:#B3760A;}
+  .hf-tagpill.comms{background:#E9F0FE; color:#2F6FED;}
+  .hf-card h6{font-family:'Sora'; font-size:11.5px; font-weight:700; color:#211D16; margin:0 0 4px; line-height:1.3;}
+  .hf-card p{font-size:9.5px; color:#948F82; margin:0 0 10px; line-height:1.4;}
+  .hf-card-bottom{display:flex; align-items:center; justify-content:space-between;}
+  .hf-av{width:21px; height:21px; border-radius:50%; background:#FF486C; color:#fff; font-size:8px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .hf-card-pri{display:flex; align-items:center; gap:4px; font-size:9px; color:#948F82; font-weight:600;}
+  .hf-card-pri .dot{width:5px; height:5px; border-radius:50%;}
+  .hf-card-pri .dot.crit{background:#EB5757;} .hf-card-pri .dot.high{background:#F2994A;} .hf-card-pri .dot.med{background:#D8D3C6;}
+
+  .hf-view-all{font-size:10px; color:#D82C3B; font-weight:600; text-align:center; padding:8px 0 3px;}
+
+  .hf-ref-strip{
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+    padding:9px 11px; gap:0; background:#FBFAF7; border:1px solid #EFECE4;
+    border-radius:10px; margin-bottom:15px;
+  }
+  .hf-ref-c{min-width:0; padding:0 9px; border-right:1px solid #EFECE4; font-size:8.5px; color:#948F82; line-height:1.35;}
+  .hf-ref-c:first-child{padding-left:0;}
+  .hf-ref-c:last-child{border-right:none;}
+  .hf-ref-c b{color:#4E4A40; font-weight:700;}
+  .hf-ref-label{font-size:9px; font-weight:700; color:#B4AFA0; text-transform:uppercase; letter-spacing:.03em; margin-bottom:7px;}
+
+  .hf-list-item{display:flex; align-items:center; gap:7px; padding:7px 10px; border-bottom:1px solid #F3F1EC; background:#fff;}
+  .hf-list-item:first-child{border-radius:10px 10px 0 0;}
+  .hf-list-item:last-child{border-bottom:none; border-radius:0 0 10px 10px;}
+  .hf-list-wrap{border:1px solid #EFECE4; border-radius:10px; overflow:hidden;}
+  .hf-list-txt{flex:1; min-width:0; font-size:9.5px; color:#211D16; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .hf-list-due{font-size:8.5px; color:#948F82; white-space:nowrap; flex-shrink:0;}
+  .hf-list-due.crit{color:#D82C3B; font-weight:700;}
+  .hf-group-head{font-size:8.5px; font-weight:700; color:#B4AFA0; padding:7px 10px 4px; text-transform:uppercase; letter-spacing:.03em;}
+
+  .hf-caption{font-size:12.5px; color:var(--muted2); margin-top:14px; font-style:italic;}
+  .hf-hint{display:none;}
+  .process-note{font-size:13px; color:var(--muted); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-top:16px;}
+
+  /* RESPONSIVE PRESENTATION - keep the product UI desktop-like; use local horizontal scrolling on narrow screens. */
+  .hf-scroll{overflow-x:auto; overflow-y:hidden;}
+  .hf-outer{max-width:1180px;}
+  .hf-shell{min-width:980px; position:relative;}
+  .hf-side{width:64px; transition:width .2s ease; position:relative;}
+  .hf-side:not(.collapsed){width:170px;}
+  .hf-collapse{display:flex; align-items:center; justify-content:center; width:32px; height:32px; margin:0 auto 14px; border:1px solid #EFECE4; background:#fff; border-radius:8px; color:#6F6A5F; cursor:pointer; font-size:14px;}
+  .hf-brand{justify-content:center; padding:0 8px 18px;}
+  .hf-brand-text{display:none;}
+  .hf-side:not(.collapsed) .hf-brand{justify-content:flex-start; padding:0 14px 22px;}
+  .hf-side:not(.collapsed) .hf-brand-text{display:inline;}
+  .hf-nav{padding:0 7px;}
+  .hf-nitem{width:100%; border:0; background:transparent; cursor:pointer; text-align:left;}
+  .hf-nav-label{display:none;}
+  .hf-side:not(.collapsed) .hf-nav-label{display:inline;}
+  .hf-side:not(.collapsed) .hf-nav{padding:0 8px;}
+  .hf-side:not(.collapsed) .hf-nitem{gap:7px; padding:7px 9px;}
+  .hf-card,.hf-fcard,.hf-tab,.hf-view-all{cursor:pointer;}
+  .hf-card:focus-visible,.hf-fcard:focus-visible,.hf-tab:focus-visible,.hf-nitem:focus-visible,.hf-collapse:focus-visible,.hf-view-all:focus-visible{outline:2px solid #FF486C; outline-offset:2px;}
+  .hf-card:hover{transform:translateY(-1px); box-shadow:0 12px 24px -14px rgba(40,30,15,.28);}
+  .hf-card{transition:transform .16s ease, box-shadow .16s ease;}
+  .hf-fcard{border:1px solid #EFECE4; text-align:left; font:inherit;}
+  .hf-tab{border:0; background:transparent; cursor:pointer;}
+  .hf-view-all{width:100%; border:0; background:transparent; font:inherit;}
+  .hf-extra-cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin:0 0 8px;}
+  .hf-status{font-size:9px; color:#948F82; margin-top:8px;}
+  .hf-modal{position:absolute; inset:0; background:rgba(33,29,22,.18); display:flex; align-items:center; justify-content:center; z-index:5;}
+  .hf-modal-card{position:relative; width:min(360px,80%); background:#fff; border:1px solid #EFECE4; border-radius:12px; padding:18px; box-shadow:0 20px 50px rgba(40,30,15,.18);}
+  .hf-modal-close{position:absolute; top:8px; right:10px; border:0; background:transparent; font-size:20px; cursor:pointer; color:#948F82;}
+  .hf-modal-kicker{font-size:9px; text-transform:uppercase; letter-spacing:.05em; color:#B4AFA0; font-weight:700;}
+  .hf-modal-title{font-family:'Sora'; font-size:14px; margin:7px 0 5px; color:#211D16;}
+  .hf-modal-text,.hf-modal-meta{font-size:10px; line-height:1.5; color:#6F6A5F;}
+  @media(max-width:640px){
+    .hf-scroll{padding:0 10px;}
+    .hf-outer{padding:10px; min-width:1000px;}
+    .hf-shell{min-width:980px; position:relative;}
+  }
+  @media(max-width:420px){.hf-scroll{padding:0 8px;}}
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Foundey · Senior PD Challenge</div>
+    <h1>From parallel blocks to a single priority queue</h1>
+    <p class="lede">Redesign of the internal fulfillment operations dashboard so opening the screen immediately answers: what do I need to do now?</p>
+    <div class="meta-row">
+      <span class="meta-chip">Context: internal ops app (fulfillment)</span>
+      <span class="meta-chip">Time: &lt; 1h</span>
+      <span class="meta-chip">Deliverable: reasoning + wireframe</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">01 · The problem</div>
+    <h2>The dashboard gives everything the same weight, so nobody knows where to start</h2>
+    <p class="body">Today the screen combines recent activity, orders, notifications, and team comms into four parallel blocks. None of them says which item is more urgent than another, so people have to open all four to find out.</p>
+    <div class="quote">"I never know what needs my attention first."
+      <span>Recurring dashboard user complaint</span>
+    </div>
+    <p class="body">From the manager side: <em>"I cannot see what each team member is working on."</em> Both problems come from the same root cause: the screen organizes by <b>content type</b>, not by <b>what requires action now</b>.</p>
+  </section>
+
+  <section>
+    <div class="label">02 · Design principle</div>
+    <h2>A queue ordered by real urgency, not a wall of sections</h2>
+    <div class="principle-box">
+      <div class="big">The system decides where to start, not the person.</div>
+      <p class="body" style="margin-bottom:0;">This is not about adding another filter to the current screen. It assumes orders, notifications, and comms compete for the same attention, so they need to be compared against each other using a visible criterion, not simply listed side by side.</p>
+    </div>
+    <div class="three-col">
+      <div class="item"><h3>One queue, not four blocks</h3><p>Actionable items from every source enter the same ordered list.</p></div>
+      <div class="item"><h3>Visible criterion</h3><p>Each item shows why it is in that position (deadline, impact).</p></div>
+      <div class="item"><h3>Reference does not compete with action</h3><p>Anything that does not require a decision stays visually below, without competing for space.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">03 · Decisions</div>
+    <h2>Three choices that define the screen</h2>
+
+    <div class="decision">
+      <div class="dnum">Decision 01 · Structure</div>
+      <h3>One queue across types instead of blocks by type</h3>
+      <div class="tension">Tension: grouping by type (orders, notifications, comms) is easier to scan within each category, but forces people to decide which block to open first.</div>
+      <div class="options">
+        <div class="opt rejected"><div class="opt-tag">Option A</div><p>Keep the four content-type blocks and only reorganize them visually.</p></div>
+        <div class="opt chosen"><div class="opt-tag">Option B - selected</div><p>One section, "Needs Your Attention", that gathers items requiring action and orders them by urgency, with a label showing each item's source.</p></div>
+      </div>
+      <div class="why"><b>Why:</b> the issue is not a lack of information. It is a lack of order among information that already exists. Separating by type improves scanability, not prioritization.</div>
+      <div class="tradeoff-line">Tradeoff: each type has less context at a glance. That is why the source label (Order / Notification / Comms) remains visible on each row.</div>
+    </div>
+
+    <div class="decision">
+      <div class="dnum">Decision 02 · Urgency criterion</div>
+      <h3>Deadline and impact, not arrival order</h3>
+      <div class="tension">Tension: "urgent" can mean creation date, deadline (SLA), or order/customer impact, and each data source speaks a different language today.</div>
+      <div class="options">
+        <div class="opt rejected"><div class="opt-tag">Option A</div><p>Sort by creation date, newest first. This mirrors the current "Recent Activity" pattern.</p></div>
+        <div class="opt chosen"><div class="opt-tag">Option B - selected</div><p>Sort by a compound criterion: at-risk deadline &gt; order/customer impact &gt; wait time. The deadline appears on each row ("due 2h ago", "due today").</p></div>
+      </div>
+      <div class="why"><b>Why:</b> creation date says nothing about risk. An order that has been blocked by payment for 1 hour is more urgent than a 3-day-old notification with no deadline.</div>
+      <div class="tradeoff-line">Tradeoff: this criterion assumes each source has, or will have, a deadline/severity field. That is a data dependency, not just a layout dependency, and remains an open assumption.</div>
+    </div>
+
+    <div class="decision">
+      <div class="dnum">Decision 03 · Manager view</div>
+      <h3>Same dashboard, regrouped by person</h3>
+      <div class="tension">Tension: managers need to see team workload, but a separate screen doubles maintenance and creates two sources of truth.</div>
+      <div class="options">
+        <div class="opt rejected"><div class="opt-tag">Option A</div><p>Separate manager-only screen with its own team view.</p></div>
+        <div class="opt chosen"><div class="opt-tag">Option B - selected</div><p>A "Queue / By person" toggle on the same dashboard: managers can regroup the same queue by team member.</p></div>
+      </div>
+      <div class="why"><b>Why:</b> the queue and urgency criteria already exist. Regrouping is cheaper than rebuilding, and the manager sees exactly the same source the team uses.</div>
+      <div class="tradeoff-line">Tradeoff: per-person workload metrics (item count, average time) do not fit this simple regrouping and are outside the scope of this design.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">04 · Process · low-fidelity sketch</div>
+    <h2>The queue replaces action blocks; reference stays below, out of the way</h2>
+    <div class="wf-shell">
+      <div class="wf-side">
+        <div class="wf-brand">OPS</div>
+        <div class="wf-item active">Dashboard</div>
+        <div class="wf-item">Orders</div>
+        <div class="wf-item">Notifications</div>
+        <div class="wf-item">Team Comms</div>
+        <div class="wf-item">Reports</div>
+        <div class="wf-item">Settings</div>
+      </div>
+      <div class="wf-main">
+        <div class="wf-toprow">
+          <div>
+            <div class="wf-title">Dashboard</div>
+            <div class="wf-sub">A ranked queue, so it is always clear what to do next</div>
+          </div>
+          <div class="wf-toggle"><span class="on">Queue</span><span>By person</span></div>
+        </div>
+
+        <div class="wf-panel">
+          <div class="wf-panel-head">
+            <span class="wf-dot"></span> Needs Your Attention <span class="wf-count">6</span>
+            <span class="wf-rank-label">ordered by deadline + impact</span>
+          </div>
+          <div class="wf-row"><span class="wf-tag order">ORDER</span><span class="rtext"><b>#4821</b> payment mismatch, blocking fulfillment</span><span class="rdue">due 2h ago</span><span class="wf-btn">Review</span></div>
+          <div class="wf-row"><span class="wf-tag notif">NOTIF</span><span class="rtext">Compliance alert - annual report filing</span><span class="rdue">due today</span><span class="wf-btn">Review</span></div>
+          <div class="wf-row"><span class="wf-tag comms">COMMS</span><span class="rtext">Teammate flagged you in "Client escalation"</span><span class="rdue">3h ago</span><span class="wf-btn">Open</span></div>
+          <div class="wf-row"><span class="wf-tag order">ORDER</span><span class="rtext"><b>#4796</b> customer requested rush shipping</span><span class="rdue">due tomorrow</span><span class="wf-btn">Review</span></div>
+        </div>
+
+        <div class="wf-panel">
+          <div class="wf-panel-head" style="color:var(--muted); font-weight:600;">Everything else - for reference, not action</div>
+          <div style="padding:14px;">
+            <div class="wf-ref-grid">
+              <div class="wf-ref-card"><div class="rt">Recent Activity</div><div class="wf-bar"></div><div class="wf-bar short"></div></div>
+              <div class="wf-ref-card"><div class="rt">Tasks (Orders)</div><div class="wf-bar"></div><div class="wf-bar short"></div></div>
+              <div class="wf-ref-card"><div class="rt">Notifications</div><div class="wf-bar"></div><div class="wf-bar short"></div></div>
+              <div class="wf-ref-card"><div class="rt">Team Updates</div><div class="wf-bar"></div><div class="wf-bar short"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-caption">Low-fidelity sketch - hierarchy and grouping are the focus, not the final UI.</div>
+    <div class="process-note">From sketch to final UI: the single queue and the "action vs. reference" separation from the design principle remain. Only the visual language changes: a color dot replaces the colored block, and a subtle label replaces the large tag. No new data or metrics were added in this transition.</div>
+  </section>
+
+  <section>
+    <div class="label">05 · Solution · high-fidelity UI</div>
+    <h2>The same queue, now with polished craft</h2>
+    <p class="body">The same 6 items from the sketch, with no new data. Four appear as cards in the first viewport, and the other two are accessible through "View all 6 items". The deadline pill uses the same visual language as the urgency system, and "By person" is Decision 03: the same items grouped by owner.</p>
+
+    <div class="hf-scroll">
+      <div class="hf-outer">
+      <div class="hf-shell">
+        <div class="hf-side collapsed">
+          <button class="hf-collapse" type="button" aria-label="Expand sidebar" aria-expanded="false">☰</button>
+          <div class="hf-brand"><span class="sq"></span><span class="hf-brand-text">Fulfillment OPS</span></div>
+          <div class="hf-nav">
+            <button class="hf-nitem active" type="button"><span class="ic"></span><span class="hf-nav-label">Dashboard</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Orders</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Notifications</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Team Comms</span><span class="badge">2</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Reports</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Settings</span></button>
+          </div>
+        </div>
+
+        <div class="hf-main">
+          <div class="hf-topbar">
+            <h4>Dashboard</h4>
+            <div class="hf-tabs" role="tablist"><button class="hf-tab on" type="button" data-tab="queue" role="tab" aria-selected="true">Queue</button><button class="hf-tab" type="button" data-tab="person" role="tab" aria-selected="false">By person</button></div>
+          </div>
+
+          <div class="hf-filters">
+            <button class="hf-fcard on" type="button"><div class="fn">2</div><div class="fl"><span class="fdot" style="background:#D82C3B;"></span>Critical</div></button>
+            <button class="hf-fcard" type="button"><div class="fn">2</div><div class="fl"><span class="fdot" style="background:#D82C3B;"></span>Orders</div></button>
+            <button class="hf-fcard" type="button"><div class="fn">2</div><div class="fl"><span class="fdot" style="background:#B3760A;"></span>Notifications</div></button>
+            <button class="hf-fcard" type="button"><div class="fn">2</div><div class="fl"><span class="fdot" style="background:#2F6FED;"></span>Comms</div></button>
+          </div>
+
+          <div class="hf-panel-title"><div class="htitle">Needs your attention</div><div class="hcount">6</div></div>
+          <div class="hf-card-grid">
+            <div class="hf-card" role="button" tabindex="0">
+              <div class="hf-card-top"><span class="hf-due-pill pink">2h overdue</span><span class="hf-tagpill order">Order</span></div>
+              <h6>Payment mismatch - #4821</h6>
+              <p>Blocking fulfillment until resolved.</p>
+              <div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot crit"></span>Critical</span></div>
+            </div>
+            <div class="hf-card" role="button" tabindex="0">
+              <div class="hf-card-top"><span class="hf-due-pill peach">Due today</span><span class="hf-tagpill notif">Notification</span></div>
+              <h6>Compliance alert</h6>
+              <p>Annual report filing for this entity.</p>
+              <div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot high"></span>High</span></div>
+            </div>
+            <div class="hf-card" role="button" tabindex="0">
+              <div class="hf-card-top"><span class="hf-due-pill mint">3h ago</span><span class="hf-tagpill comms">Comms</span></div>
+              <h6>Flagged in "Client escalation"</h6>
+              <p>Priya M. tagged you in the thread.</p>
+              <div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div>
+            </div>
+            <div class="hf-card" role="button" tabindex="0">
+              <div class="hf-card-top"><span class="hf-due-pill peach">Due tomorrow</span><span class="hf-tagpill order">Order</span></div>
+              <h6>Rush shipping - #4796</h6>
+              <p>Customer requested expedited delivery.</p>
+              <div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div>
+            </div>
+          </div>
+          <button class="hf-view-all" type="button" aria-expanded="false">View all 6 items needing action →</button>
+          <div class="hf-extra-cards" hidden><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill peach">Due today</span><span class="hf-tagpill notif">Notification</span></div><h6>Inventory exception</h6><p>Warehouse count needs review.</p><div class="hf-card-bottom"><span class="hf-av">PM</span><span class="hf-card-pri"><span class="dot high"></span>High</span></div></div><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill mint">4h ago</span><span class="hf-tagpill comms">Comms</span></div><h6>Carrier escalation</h6><p>Carrier requested a response.</p><div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div></div></div>
+
+          <div class="hf-ref-strip">
+            <div class="hf-ref-c"><b>Recent activity</b> · order #4790 shipped, 12 min ago</div>
+            <div class="hf-ref-c"><b>Tasks (orders)</b> · 18 in progress</div>
+            <div class="hf-ref-c"><b>Notifications</b> · 2 unread</div>
+            <div class="hf-ref-c"><b>Team updates</b> · 1 new</div>
+          </div>
+
+          <div class="hf-panel-title"><div class="htitle">By person</div><span class="minitag">Manager view</span></div>
+          <div class="hf-list-wrap">
+            <div class="hf-group-head">Alex Lima · 2 open</div>
+            <div class="hf-list-item">
+              <span class="hf-tagpill order">Order</span>
+              <span class="hf-list-txt">#4821 payment mismatch, blocking fulfillment</span>
+              <span class="hf-list-due crit">due 2h ago</span>
+              <span class="hf-av">AL</span>
+            </div>
+            <div class="hf-group-head">Priya M. · 1 open</div>
+            <div class="hf-list-item">
+              <span class="hf-tagpill notif">Notification</span>
+              <span class="hf-list-txt">Compliance alert - annual report filing</span>
+              <span class="hf-list-due crit">due today</span>
+              <span class="hf-av">PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="hf-modal" hidden><div class="hf-modal-card"><button class="hf-modal-close" type="button" aria-label="Close">×</button><div class="hf-modal-kicker">Item details</div><h5 class="hf-modal-title">-</h5><p class="hf-modal-text">-</p><div class="hf-modal-meta">Click another item to inspect it.</div></div></div>
+      </div>
+      </div>
+    </div>
+    <div class="hf-status" aria-live="polite">Dashboard ready · 6 items needing attention</div>
+    <div class="hf-caption">High-fidelity UI - priority and type cards answer "what do I need to do now?" at a glance; queue cards give each item visual weight without inventing new data.</div>
+  </section>
+
+
+  <section>
+    <div class="label">06 · What was left out</div>
+    <h2>Assumptions and limits of this 1-hour design</h2>
+    <ul class="out-list">
+      <li><span class="x">-</span> The urgency criterion assumes deadline/impact can be calculated today by each source (orders, notifications, comms). In practice, this may require a data change, not just a screen change.</li>
+      <li><span class="x">-</span> Per-person workload metrics for the manager (item count, average resolution time) were not designed. The toggle only regroups the existing queue.</li>
+      <li><span class="x">-</span> Empty states and push notifications were not designed. The focus was the priority hierarchy of the main screen. The mobile version was treated only as a viewing adaptation of the same UI, without creating a new experience or flow.</li>
+      <li><span class="x">-</span> "Customer/order impact" is treated here as a single signal. In production, it will likely be composed of more than one variable and should be validated with real support data.</li>
+    </ul>
+  </section>
+
+  <footer>Foundey · Senior Product Designer Challenge</footer>
+</div>
+
+<script>
+(function(){
+  const shell=document.querySelector('.hf-shell');
+  if(!shell) return;
+  const side=shell.querySelector('.hf-side');
+  const collapse=shell.querySelector('.hf-collapse');
+  const status=shell.querySelector('.hf-status');
+  const tabs=[...shell.querySelectorAll('.hf-tab')];
+  const filters=[...shell.querySelectorAll('.hf-fcard')];
+  const cards=[...shell.querySelectorAll('.hf-card')];
+  const modal=document.querySelector('.hf-modal');
+  const modalTitle=document.querySelector('.hf-modal-title');
+  const modalText=document.querySelector('.hf-modal-text');
+  const close=modal?.querySelector('.hf-modal-close');
+  collapse?.addEventListener('click',()=>{
+    const expanded=side.classList.toggle('collapsed')===false;
+    collapse.setAttribute('aria-expanded',String(expanded));
+    collapse.setAttribute('aria-label',expanded?'Minimize sidebar':'Expand sidebar');
+    status.textContent=expanded?'Sidebar expanded · Dashboard ready':'Sidebar minimized · Dashboard ready';
+  });
+  shell.querySelectorAll('.hf-nitem').forEach(item=>item.addEventListener('click',()=>{
+    shell.querySelectorAll('.hf-nitem').forEach(x=>x.classList.remove('active')); item.classList.add('active');
+    status.textContent=item.textContent.trim()+' selected';
+  }));
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{
+    tabs.forEach(t=>{t.classList.remove('on');t.setAttribute('aria-selected','false')});
+    tab.classList.add('on');tab.setAttribute('aria-selected','true');
+    status.textContent=tab.dataset.tab==='person'?'By person view · same queue, regrouped by owner':'Queue view · prioritized items';
+  }));
+  filters.forEach(filter=>filter.addEventListener('click',()=>{
+    filters.forEach(f=>f.classList.remove('on')); filter.classList.add('on');
+    status.textContent=filter.querySelector('.fl').textContent.trim()+' filter selected';
+  }));
+  function openCard(card){
+    const title=card.querySelector('h6')?.textContent.trim()||'Selected item';
+    const text=card.querySelector('p')?.textContent.trim()||'';
+    if(modal){modal.hidden=false;modalTitle.textContent=title;modalText.textContent=text;status.textContent='Opened: '+title;}
+  }
+  cards.forEach(card=>{card.addEventListener('click',()=>openCard(card));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(card)}})});
+  close?.addEventListener('click',()=>{modal.hidden=true});
+  modal?.addEventListener('click',e=>{if(e.target===modal) modal.hidden=true});
+  const more=shell.querySelector('.hf-view-all'); const extra=shell.querySelector('.hf-extra-cards');
+  more?.addEventListener('click',()=>{const show=extra.hidden;extra.hidden=!show;more.setAttribute('aria-expanded',String(show));more.textContent=show?'Show fewer items ↑':'View all 6 items needing action →';status.textContent=show?'Showing all 6 items':'Showing priority items';});
+})();
+</script>
+
+</body>
+</html>

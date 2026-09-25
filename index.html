@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,7 +11,7 @@
   :root{
     --bg:#faf9f5; --ink:#1F1F1F; --ink-soft:#231F20;
     --muted:#5E5E5E; --muted2:#9E9E9E; --line:#E0E0E0;
-    --blue:#465EFF; --red:#FF486C; --green:#008000; --yellow:#FFE14D;
+    --blue:#465EFF; --red:#3B82F6; --green:#008000; --yellow:#FFE14D;
     --card:#FFFFFF;
     padding-top: env(safe-area-inset-top,0px);
     padding-bottom: env(safe-area-inset-bottom,0px);
@@ -173,7 +173,7 @@
   }
   .hf-outer{
     width:100%;
-    max-width:1180px;
+    max-width:1280px;
     min-width:0;
     margin:0 auto;
     background:#F1EFE9;
@@ -183,7 +183,7 @@
   }
   .hf-shell{
     display:grid;
-    grid-template-columns:170px minmax(0,1fr);
+    grid-template-columns:60px minmax(0,1fr);
     width:100%;
     min-width:0;
     background:#FFFEFC;
@@ -194,54 +194,54 @@
   }
   .hf-side{width:auto; min-width:0; background:#FBFAF7; border-right:1px solid #EFECE4; padding:18px 0;}
   .hf-brand{display:flex; align-items:center; gap:8px; padding:0 14px 22px; font-family:'Sora'; font-weight:700; font-size:12px; color:#211D16;}
-  .hf-brand .sq{width:16px; height:16px; border-radius:5px; background:#FF486C; flex-shrink:0;}
+  .hf-brand .sq{width:16px; height:16px; border-radius:5px; background:#3B82F6; flex-shrink:0;}
   .hf-nav{padding:0 8px;}
   .hf-nitem{display:flex; align-items:center; gap:7px; padding:7px 9px; border-radius:8px; font-size:11px; color:#928D80; margin-bottom:2px; font-weight:500;}
   .hf-nitem .ic{width:12px; height:12px; border-radius:3px; border:1.4px solid #D8D3C6; flex-shrink:0;}
-  .hf-nitem.active{background:#FFEEF0; color:#D82C3B; font-weight:700;}
-  .hf-nitem.active .ic{border-color:#FF486C; background:#FF486C;}
-  .hf-nitem .badge{margin-left:auto; background:#FF486C; color:#fff; font-size:9px; font-weight:700; border-radius:8px; padding:1px 5px;}
+  .hf-nitem.active{background:#EEF4FF; color:#2563EB; font-weight:700;}
+  .hf-nitem.active .ic{border-color:#3B82F6; background:#3B82F6;}
+  .hf-nitem .badge{margin-left:auto; background:#3B82F6; color:#fff; font-size:9px; font-weight:700; border-radius:8px; padding:1px 5px;}
 
-  .hf-main{min-width:0; padding:22px 24px;}
+  .hf-main{min-width:0; padding:26px 28px;}
   .hf-topbar{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:16px;}
-  .hf-topbar h4{font-family:'Sora'; font-size:15px; font-weight:700; margin:0; color:#211D16;}
+  .hf-topbar h4{font-family:'Sora'; font-size:16px; font-weight:700; margin:0; color:#211D16;}
   .hf-tabs{display:flex; gap:2px; background:#F1EFE9; border-radius:8px; padding:3px;}
   .hf-tab{font-size:10px; font-weight:600; color:#928D80; padding:5px 10px; border-radius:6px;}
   .hf-tab.on{background:#fff; color:#211D16; box-shadow:0 2px 6px rgba(40,30,15,.10);}
 
-  .hf-filters{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:16px;}
+  .hf-filters{display:grid; grid-template-columns:repeat(4,minmax(150px,1fr)); gap:10px; margin-bottom:16px;}
   .hf-fcard{min-width:0; background:#fff; border:1px solid #EFECE4; border-radius:11px; padding:10px 11px; box-shadow:0 6px 16px -12px rgba(40,30,15,.16);}
   .hf-fcard .fdot{width:6px; height:6px; border-radius:50%; display:inline-block; margin-right:5px;}
   .hf-fcard .fn{font-family:'Sora'; font-size:17px; font-weight:700; color:#211D16; line-height:1.1; margin-bottom:4px;}
   .hf-fcard .fl{font-size:9.5px; color:#948F82; font-weight:600; white-space:nowrap;}
-  .hf-fcard.on{border-color:#FBCBD2; background:#FFF6F7;}
-  .hf-fcard.on .fn{color:#D82C3B;}
+  .hf-fcard.on{border-color:#BFDBFE; background:#F7FAFF;}
+  .hf-fcard.on .fn{color:#2563EB;}
 
   .hf-panel-title{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
   .hf-panel-title .htitle{font-family:'Sora'; font-weight:700; font-size:12px; color:#211D16;}
   .hf-panel-title .hcount{color:#B4AFA0; font-size:11px; font-weight:600;}
   .hf-panel-title .minitag{margin-left:auto; font-size:9px; font-weight:700; color:#948F82; background:#F1EFE9; border-radius:6px; padding:3px 7px;}
 
-  .hf-card-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-bottom:8px;}
-  .hf-card{min-width:0; background:#fff; border:1px solid #EFECE4; border-radius:11px; padding:12px 13px; box-shadow:0 8px 20px -14px rgba(40,30,15,.18);}
+  .hf-card-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-bottom:8px;}
+  .hf-card{min-width:0; background:#fff; border:1px solid #EFECE4; border-radius:12px; padding:14px 15px; box-shadow:0 8px 20px -14px rgba(40,30,15,.18);}
   .hf-card-top{display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:9px;}
   .hf-due-pill{font-size:9px; font-weight:700; padding:3px 7px; border-radius:20px; white-space:nowrap;}
-  .hf-due-pill.pink{background:#FCE1E5; color:#D82C3B;}
+  .hf-due-pill.pink{background:#EEF4FF; color:#2563EB;}
   .hf-due-pill.peach{background:#FDEEDC; color:#C1670B;}
   .hf-due-pill.mint{background:#E1F3EA; color:#1F9463;}
   .hf-tagpill{font-size:8px; font-weight:700; border-radius:6px; padding:3px 6px; flex-shrink:0; letter-spacing:.01em;}
   .hf-tagpill.order{background:#FDEBEC; color:#D82C3B;}
   .hf-tagpill.notif{background:#FDF1E1; color:#B3760A;}
   .hf-tagpill.comms{background:#E9F0FE; color:#2F6FED;}
-  .hf-card h6{font-family:'Sora'; font-size:11.5px; font-weight:700; color:#211D16; margin:0 0 4px; line-height:1.3;}
-  .hf-card p{font-size:9.5px; color:#948F82; margin:0 0 10px; line-height:1.4;}
+  .hf-card h6{font-family:'Sora'; font-size:12px; font-weight:700; color:#211D16; margin:0 0 4px; line-height:1.3;}
+  .hf-card p{font-size:10px; color:#948F82; margin:0 0 10px; line-height:1.4;}
   .hf-card-bottom{display:flex; align-items:center; justify-content:space-between;}
-  .hf-av{width:21px; height:21px; border-radius:50%; background:#FF486C; color:#fff; font-size:8px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .hf-av{width:21px; height:21px; border-radius:50%; background:#3B82F6; color:#fff; font-size:8px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
   .hf-card-pri{display:flex; align-items:center; gap:4px; font-size:9px; color:#948F82; font-weight:600;}
   .hf-card-pri .dot{width:5px; height:5px; border-radius:50%;}
   .hf-card-pri .dot.crit{background:#EB5757;} .hf-card-pri .dot.high{background:#F2994A;} .hf-card-pri .dot.med{background:#D8D3C6;}
 
-  .hf-view-all{font-size:10px; color:#D82C3B; font-weight:600; text-align:center; padding:8px 0 3px;}
+  .hf-view-all{font-size:9.5px; color:#77736B; font-weight:600; text-align:center; padding:3px 6px; margin:2px auto 8px;}
 
   .hf-ref-strip{
     display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
@@ -267,46 +267,66 @@
   .hf-hint{display:none;}
   .process-note{font-size:13px; color:var(--muted); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 18px; margin-top:16px;}
 
-  /* RESPONSIVE PRESENTATION - keep the product UI desktop-like; use local horizontal scrolling on narrow screens. */
-  .hf-scroll{overflow-x:auto; overflow-y:hidden;}
-  .hf-outer{max-width:1180px;}
-  .hf-shell{min-width:980px; position:relative;}
-  .hf-side{width:64px; transition:width .2s ease; position:relative;}
-  .hf-side:not(.collapsed){width:170px;}
-  .hf-collapse{display:flex; align-items:center; justify-content:center; width:32px; height:32px; margin:0 auto 14px; border:1px solid #EFECE4; background:#fff; border-radius:8px; color:#6F6A5F; cursor:pointer; font-size:14px;}
+  /* RESPONSIVE PRESENTATION */
+  .hf-scroll{width:100%; margin:8px auto 0; padding:0 10px; overflow-x:auto; overflow-y:hidden; scrollbar-gutter:stable;}
+  .hf-outer{width:100%; max-width:1280px; margin:0 auto; padding:14px;}
+  .hf-shell{grid-template-columns:72px minmax(0,1fr); min-width:0; position:relative; transition:grid-template-columns .2s ease;}
+  .hf-shell.sidebar-expanded{grid-template-columns:190px minmax(0,1fr);}
+  .hf-side{width:100%; min-width:0; transition:width .2s ease; position:relative;}
+  .hf-side:not(.collapsed){width:100%;}
+  .hf-collapse{display:flex; align-items:center; justify-content:center; width:36px; height:36px; margin:0 auto 14px; border:1px solid #EFECE4; background:#fff; border-radius:9px; color:#6F6A5F; cursor:pointer;}
+  .hf-collapse .material-symbols-outlined{font-size:19px; line-height:1;}
   .hf-brand{justify-content:center; padding:0 8px 18px;}
   .hf-brand-text{display:none;}
   .hf-side:not(.collapsed) .hf-brand{justify-content:flex-start; padding:0 14px 22px;}
   .hf-side:not(.collapsed) .hf-brand-text{display:inline;}
-  .hf-nav{padding:0 7px;}
-  .hf-nitem{width:100%; border:0; background:transparent; cursor:pointer; text-align:left;}
+  .hf-nav{padding:0 8px;}
+  .hf-nitem{width:100%; min-height:42px; border:0; background:transparent; cursor:pointer; text-align:left; justify-content:center; padding:8px;}
   .hf-nav-label{display:none;}
   .hf-side:not(.collapsed) .hf-nav-label{display:inline;}
   .hf-side:not(.collapsed) .hf-nav{padding:0 8px;}
-  .hf-side:not(.collapsed) .hf-nitem{gap:7px; padding:7px 9px;}
+  .hf-side:not(.collapsed) .hf-nitem{justify-content:flex-start; gap:9px; padding:9px 10px;}
+  .hf-nitem .ic{width:22px; height:22px; display:flex; align-items:center; justify-content:center; border:0; border-radius:6px; color:#9B9588; flex-shrink:0;}
+  .hf-nitem .ic .material-symbols-outlined{font-size:20px; line-height:1; font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 20;}
+  .hf-nitem.active .ic{background:transparent; color:#2563EB;}
+  .hf-nitem.active .ic .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 20;}
+  .hf-nitem .badge{margin-left:auto;}
   .hf-card,.hf-fcard,.hf-tab,.hf-view-all{cursor:pointer;}
-  .hf-card:focus-visible,.hf-fcard:focus-visible,.hf-tab:focus-visible,.hf-nitem:focus-visible,.hf-collapse:focus-visible,.hf-view-all:focus-visible{outline:2px solid #FF486C; outline-offset:2px;}
+  .hf-card:focus-visible,.hf-fcard:focus-visible,.hf-tab:focus-visible,.hf-nitem:focus-visible,.hf-collapse:focus-visible,.hf-view-all:focus-visible{outline:2px solid #93C5FD; outline-offset:2px;}
   .hf-card:hover{transform:translateY(-1px); box-shadow:0 12px 24px -14px rgba(40,30,15,.28);}
-  .hf-card{transition:transform .16s ease, box-shadow .16s ease;}
+  .hf-card{transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;}
   .hf-fcard{border:1px solid #EFECE4; text-align:left; font:inherit;}
   .hf-tab{border:0; background:transparent; cursor:pointer;}
-  .hf-view-all{width:100%; border:0; background:transparent; font:inherit;}
+  .hf-view-all{width:max-content; min-height:24px; border:0; border-radius:6px; background:transparent; font:inherit; font-size:9.5px; color:#77736B; font-weight:600; text-align:center; padding:3px 6px; margin:2px auto 8px; display:flex; align-items:center; justify-content:center; gap:3px;}
+  .hf-view-all:hover{background:#F4F1EB; color:#3B3935;}
+  .hf-view-all .material-symbols-outlined{font-size:13px; line-height:1;}
   .hf-extra-cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin:0 0 8px;}
-  .hf-status{font-size:9px; color:#948F82; margin-top:8px;}
+  .hf-status{font-size:10px; color:#948F82; margin-top:8px;}
+  .hf-shell > .hf-modal[hidden], .hf-shell .hf-extra-cards[hidden]{display:none !important;}
   .hf-modal{position:absolute; inset:0; background:rgba(33,29,22,.18); display:flex; align-items:center; justify-content:center; z-index:5;}
   .hf-modal-card{position:relative; width:min(360px,80%); background:#fff; border:1px solid #EFECE4; border-radius:12px; padding:18px; box-shadow:0 20px 50px rgba(40,30,15,.18);}
   .hf-modal-close{position:absolute; top:8px; right:10px; border:0; background:transparent; font-size:20px; cursor:pointer; color:#948F82;}
   .hf-modal-kicker{font-size:9px; text-transform:uppercase; letter-spacing:.05em; color:#B4AFA0; font-weight:700;}
   .hf-modal-title{font-family:'Sora'; font-size:14px; margin:7px 0 5px; color:#211D16;}
   .hf-modal-text,.hf-modal-meta{font-size:10px; line-height:1.5; color:#6F6A5F;}
-  @media(max-width:640px){
-    .hf-scroll{padding:0 10px;}
-    .hf-outer{padding:10px; min-width:1000px;}
-    .hf-shell{min-width:980px; position:relative;}
+  .hf-person-view{display:none;}
+  .hf-card.is-dimmed{opacity:.28; transform:none !important;}
+  .hf-card.is-highlighted{border-color:#93C5FD; background:#F7FAFF; box-shadow:0 10px 24px -14px rgba(59,130,246,.25);}
+  @media(max-width:760px){
+    .hf-scroll{padding:0 8px;}
+    .hf-outer{min-width:0;}
+    .hf-shell{min-width:900px;}
   }
-  @media(max-width:420px){.hf-scroll{padding:0 8px;}}
+  @media(max-width:560px){
+    .hf-scroll{padding:0 6px;}
+    .hf-shell{min-width:900px;}
+  }
+
 
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
 </head>
 <body>
 
@@ -446,15 +466,15 @@
       <div class="hf-outer">
       <div class="hf-shell">
         <div class="hf-side collapsed">
-          <button class="hf-collapse" type="button" aria-label="Expand sidebar" aria-expanded="false">☰</button>
+          <button class="hf-collapse" type="button" aria-label="Expand sidebar" aria-expanded="false"><span class="material-symbols-outlined" aria-hidden="true">menu</span></button>
           <div class="hf-brand"><span class="sq"></span><span class="hf-brand-text">Fulfillment OPS</span></div>
           <div class="hf-nav">
-            <button class="hf-nitem active" type="button"><span class="ic"></span><span class="hf-nav-label">Dashboard</span></button>
-            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Orders</span></button>
-            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Notifications</span></button>
-            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Team Comms</span><span class="badge">2</span></button>
-            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Reports</span></button>
-            <button class="hf-nitem" type="button"><span class="ic"></span><span class="hf-nav-label">Settings</span></button>
+            <button class="hf-nitem active" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">dashboard</span></span><span class="hf-nav-label">Dashboard</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">receipt_long</span></span><span class="hf-nav-label">Orders</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">notifications</span></span><span class="hf-nav-label">Notifications</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">chat_bubble</span></span><span class="hf-nav-label">Team Comms</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">bar_chart</span></span><span class="hf-nav-label">Reports</span></button>
+            <button class="hf-nitem" type="button"><span class="ic"><span class="material-symbols-outlined" aria-hidden="true">settings</span></span><span class="hf-nav-label">Settings</span></button>
           </div>
         </div>
 
@@ -472,7 +492,7 @@
           </div>
 
           <div class="hf-panel-title"><div class="htitle">Needs your attention</div><div class="hcount">6</div></div>
-          <div class="hf-card-grid">
+          <div class="hf-card-grid" data-view="queue">
             <div class="hf-card" role="button" tabindex="0">
               <div class="hf-card-top"><span class="hf-due-pill pink">2h overdue</span><span class="hf-tagpill order">Order</span></div>
               <h6>Payment mismatch - #4821</h6>
@@ -498,16 +518,17 @@
               <div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div>
             </div>
           </div>
-          <button class="hf-view-all" type="button" aria-expanded="false">View all 6 items needing action →</button>
-          <div class="hf-extra-cards" hidden><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill peach">Due today</span><span class="hf-tagpill notif">Notification</span></div><h6>Inventory exception</h6><p>Warehouse count needs review.</p><div class="hf-card-bottom"><span class="hf-av">PM</span><span class="hf-card-pri"><span class="dot high"></span>High</span></div></div><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill mint">4h ago</span><span class="hf-tagpill comms">Comms</span></div><h6>Carrier escalation</h6><p>Carrier requested a response.</p><div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div></div></div>
+          <button class="hf-view-all" type="button" aria-expanded="false" data-view="queue">View all 6 items <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></button>
+          <div class="hf-extra-cards" hidden data-view="queue"><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill peach">Due today</span><span class="hf-tagpill notif">Notification</span></div><h6>Inventory exception</h6><p>Warehouse count needs review.</p><div class="hf-card-bottom"><span class="hf-av">PM</span><span class="hf-card-pri"><span class="dot high"></span>High</span></div></div><div class="hf-card" role="button" tabindex="0"><div class="hf-card-top"><span class="hf-due-pill mint">4h ago</span><span class="hf-tagpill comms">Comms</span></div><h6>Carrier escalation</h6><p>Carrier requested a response.</p><div class="hf-card-bottom"><span class="hf-av">AL</span><span class="hf-card-pri"><span class="dot med"></span>Normal</span></div></div></div>
 
-          <div class="hf-ref-strip">
+          <div class="hf-ref-strip" data-view="queue">
             <div class="hf-ref-c"><b>Recent activity</b> · order #4790 shipped, 12 min ago</div>
             <div class="hf-ref-c"><b>Tasks (orders)</b> · 18 in progress</div>
             <div class="hf-ref-c"><b>Notifications</b> · 2 unread</div>
             <div class="hf-ref-c"><b>Team updates</b> · 1 new</div>
           </div>
 
+          <div class="hf-person-view" data-view="person">
           <div class="hf-panel-title"><div class="htitle">By person</div><span class="minitag">Manager view</span></div>
           <div class="hf-list-wrap">
             <div class="hf-group-head">Alex Lima · 2 open</div>
@@ -525,8 +546,9 @@
               <span class="hf-av">PM</span>
             </div>
           </div>
+          </div>
         </div>
-        <div class="hf-modal" hidden><div class="hf-modal-card"><button class="hf-modal-close" type="button" aria-label="Close">×</button><div class="hf-modal-kicker">Item details</div><h5 class="hf-modal-title">-</h5><p class="hf-modal-text">-</p><div class="hf-modal-meta">Click another item to inspect it.</div></div></div>
+        <div class="hf-modal" hidden><div class="hf-modal-card"><button class="hf-modal-close" type="button" aria-label="Close">×</button><div class="hf-modal-kicker">Item details</div><h5 class="hf-modal-title"></h5><p class="hf-modal-text"></p><div class="hf-modal-meta">Select another item to inspect it.</div></div></div>
       </div>
       </div>
     </div>
@@ -555,43 +577,68 @@
   if(!shell) return;
   const side=shell.querySelector('.hf-side');
   const collapse=shell.querySelector('.hf-collapse');
-  const status=shell.querySelector('.hf-status');
+  const status=document.querySelector('.hf-status');
   const tabs=[...shell.querySelectorAll('.hf-tab')];
   const filters=[...shell.querySelectorAll('.hf-fcard')];
   const cards=[...shell.querySelectorAll('.hf-card')];
-  const modal=document.querySelector('.hf-modal');
-  const modalTitle=document.querySelector('.hf-modal-title');
-  const modalText=document.querySelector('.hf-modal-text');
+  const modal=shell.querySelector('.hf-modal');
+  const modalTitle=shell.querySelector('.hf-modal-title');
+  const modalText=shell.querySelector('.hf-modal-text');
   const close=modal?.querySelector('.hf-modal-close');
+  const queueNodes=[...shell.querySelectorAll('[data-view="queue"]')];
+  const personView=shell.querySelector('.hf-person-view');
+  function setStatus(message){if(status) status.textContent=message;}
+  function setTab(view){
+    tabs.forEach(tab=>{const active=tab.dataset.tab===view;tab.classList.toggle('on',active);tab.setAttribute('aria-selected',String(active));});
+    const queue=view==='queue';
+    queueNodes.forEach(node=>{node.style.display=queue?'':'none';});
+    if(personView) personView.style.display=queue?'none':'block';
+    setStatus(queue?'Queue view · prioritized items':'By person view · same queue, regrouped by owner');
+  }
   collapse?.addEventListener('click',()=>{
-    const expanded=side.classList.toggle('collapsed')===false;
+    const expanded=side.classList.contains('collapsed');
+    side.classList.toggle('collapsed',!expanded);
+    shell.classList.toggle('sidebar-expanded',expanded);
     collapse.setAttribute('aria-expanded',String(expanded));
     collapse.setAttribute('aria-label',expanded?'Minimize sidebar':'Expand sidebar');
-    status.textContent=expanded?'Sidebar expanded · Dashboard ready':'Sidebar minimized · Dashboard ready';
+    setStatus(expanded?'Sidebar expanded · Dashboard ready':'Sidebar minimized · Dashboard ready');
   });
   shell.querySelectorAll('.hf-nitem').forEach(item=>item.addEventListener('click',()=>{
-    shell.querySelectorAll('.hf-nitem').forEach(x=>x.classList.remove('active')); item.classList.add('active');
-    status.textContent=item.textContent.trim()+' selected';
+    shell.querySelectorAll('.hf-nitem').forEach(x=>x.classList.remove('active'));item.classList.add('active');
+    setStatus((item.querySelector('.hf-nav-label')?.textContent.trim()||'Section')+' selected');
   }));
-  tabs.forEach(tab=>tab.addEventListener('click',()=>{
-    tabs.forEach(t=>{t.classList.remove('on');t.setAttribute('aria-selected','false')});
-    tab.classList.add('on');tab.setAttribute('aria-selected','true');
-    status.textContent=tab.dataset.tab==='person'?'By person view · same queue, regrouped by owner':'Queue view · prioritized items';
-  }));
+  tabs.forEach(tab=>tab.addEventListener('click',()=>setTab(tab.dataset.tab)));
+  function clearHighlights(){cards.forEach(card=>card.classList.remove('is-highlighted','is-dimmed'));}
   filters.forEach(filter=>filter.addEventListener('click',()=>{
-    filters.forEach(f=>f.classList.remove('on')); filter.classList.add('on');
-    status.textContent=filter.querySelector('.fl').textContent.trim()+' filter selected';
+    const wasActive=filter.classList.contains('on');
+    filters.forEach(f=>f.classList.remove('on'));
+    clearHighlights();
+    if(wasActive){
+      setStatus('Filters cleared');
+      return;
+    }
+    filter.classList.add('on');
+    const label=filter.querySelector('.fl')?.textContent.trim()||'';
+    if(label==='Orders') cards.forEach(card=>card.classList.toggle('is-highlighted',!!card.querySelector('.hf-tagpill.order')));
+    else if(label==='Notifications') cards.forEach(card=>card.classList.toggle('is-highlighted',!!card.querySelector('.hf-tagpill.notif')));
+    else if(label==='Comms') cards.forEach(card=>card.classList.toggle('is-highlighted',!!card.querySelector('.hf-tagpill.comms')));
+    else if(label==='Critical') cards.forEach(card=>card.classList.toggle('is-highlighted',!!card.querySelector('.hf-card-pri .crit')));
+    cards.forEach(card=>{if(!card.classList.contains('is-highlighted')) card.classList.add('is-dimmed');});
+    setStatus(label+' filter highlighted');
   }));
   function openCard(card){
     const title=card.querySelector('h6')?.textContent.trim()||'Selected item';
     const text=card.querySelector('p')?.textContent.trim()||'';
-    if(modal){modal.hidden=false;modalTitle.textContent=title;modalText.textContent=text;status.textContent='Opened: '+title;}
+    if(modal){modal.hidden=false;modalTitle.textContent=title;modalText.textContent=text;setStatus('Opened: '+title);}
   }
-  cards.forEach(card=>{card.addEventListener('click',()=>openCard(card));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(card)}})});
-  close?.addEventListener('click',()=>{modal.hidden=true});
-  modal?.addEventListener('click',e=>{if(e.target===modal) modal.hidden=true});
-  const more=shell.querySelector('.hf-view-all'); const extra=shell.querySelector('.hf-extra-cards');
-  more?.addEventListener('click',()=>{const show=extra.hidden;extra.hidden=!show;more.setAttribute('aria-expanded',String(show));more.textContent=show?'Show fewer items ↑':'View all 6 items needing action →';status.textContent=show?'Showing all 6 items':'Showing priority items';});
+  cards.forEach(card=>{card.addEventListener('click',()=>openCard(card));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCard(card);}});});
+  close?.addEventListener('click',()=>{modal.hidden=true;});
+  modal?.addEventListener('click',e=>{if(e.target===modal) modal.hidden=true;});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal&&!modal.hidden) modal.hidden=true;});
+  const more=shell.querySelector('.hf-view-all');const extra=shell.querySelector('.hf-extra-cards');
+  more?.addEventListener('click',()=>{const show=extra.hidden;extra.hidden=!show;more.setAttribute('aria-expanded',String(show));more.innerHTML=show?'View fewer items <span class="material-symbols-outlined" aria-hidden="true">expand_less</span>':'View all 6 items <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>';setStatus(show?'Showing all 6 items':'Showing priority items');});
+  shell.classList.remove('sidebar-expanded');
+  setTab('queue');
 })();
 </script>
 
